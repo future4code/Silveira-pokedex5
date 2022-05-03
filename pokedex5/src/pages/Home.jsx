@@ -12,6 +12,7 @@ export default function Home () {
        <header>
            <button onClick={proximaPagina}>Ir para Pokedex</button>
        <div>Página Home</div>
+       
        </header>
     )
 }
