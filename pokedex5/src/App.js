@@ -1,12 +1,10 @@
+import React from "react";
+import { Router } from '../src/routes/Router';
 
-
-
-function App() {
+export default function App() {
   return (
     <div>
-     Olá sou o Pokedex!
+      <Router/>
     </div>
   );
 }
-
-export default App;
