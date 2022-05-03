@@ -5,7 +5,7 @@ import {CardPokemonStyled, Button } from "./styled"
 function CardPokemon() {
     return (
      <CardPokemonStyled>
-         <p>Imagem</p>
+         <img>Imagem</img>
          <Button>Adicionar um Pokédex</Button>
          <Button>Ver detalhes</Button>
      </CardPokemonStyled>

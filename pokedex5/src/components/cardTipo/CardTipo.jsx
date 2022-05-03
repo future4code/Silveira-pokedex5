@@ -4,11 +4,7 @@ import {CardTipoStyled, Button } from "./styled"
 
 function CardTipo() {
     return (
-     <CardTipoStyled>
-         <p>Imagem</p>
-         <Button>Adicionar um Pokédex</Button>
-         <Button>Ver detalhes</Button>
-     </CardTipoStyled>
+     <div></div>
     );
   }
   

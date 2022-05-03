@@ -1,11 +1,9 @@
 import styled from "styled-components"
 
 export const CardPokemonStyled = styled.div`
-/* display: grid;
-grid-template-columns: 4fr 5fr; */
 border: 2px solid black;
-width: 20vw;
-height: 45vh;
+width: 100%;
+height: 300px;
 margin: 10px;
 
 `
