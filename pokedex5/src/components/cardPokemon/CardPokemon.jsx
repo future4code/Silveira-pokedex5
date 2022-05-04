@@ -1,11 +1,11 @@
 import React from "react"
-import {CardPokemonStyled, Button } from "./styled"
+import {CardPokemonStyled, Button, TituloCard } from "./styled"
 
-
-function CardPokemon() {
+const CardPokemon = (props) => {
     return (
      <CardPokemonStyled>
-         <img>Imagem</img>
+         <img src={props.image}/>
+         <TituloCard>{props.nome}</TituloCard>
          <Button>Adicionar um Pokédex</Button>
          <Button>Ver detalhes</Button>
      </CardPokemonStyled>
