@@ -4,6 +4,8 @@ import axios from "axios";
 import CardPokemon from "../components/cardPokemon/CardPokemon";
 import styled from "styled-components";
 import GlobalStateContext from "../context/GlobalStateContext";
+import { BASE_URL } from "../constants/urls";
+import Header from "../components/header/Header";
 
 const ContainerGrid = styled.div`
   display: grid;
@@ -33,7 +35,7 @@ const Home = () => {
     list &&
       list.forEach((poke) => {
         axios
-          .get(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)
+          .get(`${BASE_URL}/${poke.name}`)
           .then((response) => {
             novaPokeList.push(response.data);
             if (novaPokeList.length === 20) {
@@ -48,12 +50,9 @@ const Home = () => {
   }, [list]);
 
 
-  
-    
-
   const getPokemon = () => {
     axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
+      .get(`${BASE_URL}?limit=20&offset=0`)
       .then((response) => {
         setList(response.data.results);
       })
@@ -82,11 +81,10 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Pokedex</h1>
+      <Header title="Lista de Pokémons" btnEsquerda={proximaPagina} btnEsquerdaTexto="Ir para Pokédex" hasButton={false}/>
       <ContainerGrid>
         {listaPokemon}
       </ContainerGrid>
-      <button onClick={proximaPagina}>Ir para Pokedex</button>
     </div>
   );
 }
