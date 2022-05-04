@@ -1,19 +1,19 @@
 import styled from "styled-components"
 
 export const CardTipoStyled = styled.div`
-/* display: grid;
-grid-template-columns: 4fr 5fr; */
+display: flex;
+justify-content: space-between;
 border: 2px solid black;
-width: 20vw;
-height: 45vh;
-margin: 10px;
+width: 25%;
+height: 55px;
 
 `
 
-export const Button = styled.button`
-padding: 8px;
-width: 10vw;
-margin-top: 281px;
-border: 2px solid black;    
+export const Tipo1 = styled.p`
+margin-left:60px 
 	
+`
+
+export const Tipo2 = styled.p`
+margin-right:60px	
 `
