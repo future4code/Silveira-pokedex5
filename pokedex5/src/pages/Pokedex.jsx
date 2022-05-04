@@ -1,16 +1,14 @@
 import React from "react";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import Header from "../components/header/Header";
 
 export default function Pokedex() {
     const navigate = useNavigate()
 
     const voltar = () => {
-        navigate(-1)
+      navigate("/");
     }
     return(
-        <header>
-            <div>Página Pokedex</div>
-            <button onClick={voltar}>Voltar para lista de pokemons</button>
-        </header>
+      <Header title="Pokédex" btnEsquerda={voltar} btnEsquerdaTexto="Ir para Lista de Pokemons" hasButton={false}/>
     )
 }

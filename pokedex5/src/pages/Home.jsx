@@ -1,37 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
 import CardPokemon from "../components/cardPokemon/CardPokemon";
+import styled from "styled-components";
+import GlobalStateContext from "../context/GlobalStateContext";
+import { BASE_URL } from "../constants/urls";
+import Header from "../components/header/Header";
 
-export default function Home() {
-  const [detalhes, setDetalhes] = useState([]);
-  const [list, setList] = useState([]);
+const ContainerGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+  padding: 20px;
+`;
+
+const Home = () => {  
+  const { states, setters } = useContext(GlobalStateContext);
+
+  const { list } = states;
+  const { setList } = setters;
+  const { detalhes } = states;
+  const { setDetalhes } = setters;
 
   useEffect(() => {
+
     getPokemon();
+
   }, []);
 
-  const getPokemon = () => {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
-      .then((response) => {
-        setList(response.data.results);
-        console.log("Você acaba de pegar Pokemons!", response.data.results);
-      })
-      .catch((error) => {
-        console.log("Desculpe houve um erro, tente novamente!", error.response);
-      });
-  };
-
   useEffect(() => {
+
     const novaPokeList = [];
     list &&
       list.forEach((poke) => {
         axios
-          .get(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)
+          .get(`${BASE_URL}/${poke.name}`)
           .then((response) => {
-            console.log(response.data);
             novaPokeList.push(response.data);
             if (novaPokeList.length === 20) {
               setDetalhes(novaPokeList);
@@ -41,13 +46,27 @@ export default function Home() {
             console.log(erro);
           });
       });
-  });
-console.log(detalhes)
+
+  }, [list]);
+
+
+  const getPokemon = () => {
+    axios
+      .get(`${BASE_URL}?limit=20&offset=0`)
+      .then((response) => {
+        setList(response.data.results);
+      })
+      .catch((error) => {
+        console.log("Desculpe houve um erro, tente novamente!", error.response);
+      });
+  };
+
   const listaPokemon =
     detalhes &&
     detalhes.map((poke) => {
       return (
         <CardPokemon
+          key={poke.name}
           nome={poke.name}
           image={poke.sprites.other.dream_world.front_default}
         />
@@ -62,9 +81,12 @@ console.log(detalhes)
 
   return (
     <div>
-      <h1>Pokedex</h1>
-      {listaPokemon}
-      <button onClick={proximaPagina}>Ir para Pokedex</button>
+      <Header title="Lista de Pokémons" btnEsquerda={proximaPagina} btnEsquerdaTexto="Ir para Pokédex" hasButton={false}/>
+      <ContainerGrid>
+        {listaPokemon}
+      </ContainerGrid>
     </div>
   );
 }
+
+export default Home;

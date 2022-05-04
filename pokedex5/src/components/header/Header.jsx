@@ -1,11 +1,12 @@
 import React from "react";
 import {HeaderStyled, H1, Button} from "./styled"
 
-function Header() {
+function Header(props) {
     return (
       <HeaderStyled >
-       <Button>Ir para Pokedex</Button>
-       <H1>Lista de Pokémons</H1>
+       <Button onClick={props.btnEsquerda}>{props.btnEsquerdaTexto}</Button>
+       <H1>{props.title}</H1>
+       {props.hasButton === true ? <Button onClick={props.btnDireita}>{props.btnDireitaTexto}</Button> : null}
       </HeaderStyled>
     );
   }
