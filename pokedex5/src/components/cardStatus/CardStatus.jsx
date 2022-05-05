@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
+import GlobalStateContext from "../../context/GlobalStateContext";
 import {CardStatusStyled, H1, Poderes} from "./styled"
 
 
 function CardStatus() {
+    const status = useContext(GlobalStateContext);
     return (
      <CardStatusStyled>
          <H1>Poderes</H1>

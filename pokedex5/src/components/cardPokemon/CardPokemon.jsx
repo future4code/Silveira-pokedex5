@@ -10,7 +10,7 @@ const CardPokemon = (props) => {
         </ContainerImagem>
         <ContainerButtons>
           <Button>Adicionar um Pokédex</Button>
-          <Button>Ver detalhes</Button>
+          <Button onClick={()=>props.irParaDetalhes()}>Ver detalhes</Button>
         </ContainerButtons>
      </CardPokemonStyled>
     );
