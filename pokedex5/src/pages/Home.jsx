@@ -16,20 +16,29 @@ const ContainerGrid = styled.div`
 `;
 
 const Home = () => {  
+
+  const navigate = useNavigate();
+
+  const proximaPagina = () => {
+    navigate("/Pokedex");
+  };
+
   const { states, setters } = useContext(GlobalStateContext);
 
-  const { list } = states;
-  const { setList } = setters;
+ /*  const { list } = states;
+  const { setList } = setters; */
   const { detalhes } = states;
   const { setDetalhes } = setters;
+  const { pokedex } = states;
+  const { setPokedex } = setters;
 
-  useEffect(() => {
+/*   useEffect(() => {
 
     getPokemon();
 
-  }, []);
+  }, []); */
 
-  useEffect(() => {
+/*   useEffect(() => {
 
     const novaPokeList = [];
     list &&
@@ -38,8 +47,11 @@ const Home = () => {
           .get(`${BASE_URL}/${poke.name}`)
           .then((response) => {
             novaPokeList.push(response.data);
-            if (novaPokeList.length === 20) {
-              setDetalhes(novaPokeList);
+            if (novaPokeList.length === list.length) {
+              const novaPokeListOrdenada = novaPokeList.sort((a,b)=>{
+                return a.id - b.id;
+              })
+              setDetalhes(novaPokeListOrdenada);
             }
           })
           .catch((erro) => {
@@ -59,7 +71,19 @@ const Home = () => {
       .catch((error) => {
         console.log("Desculpe houve um erro, tente novamente!", error.response);
       });
+  }; */
+
+  const addToPokedex = (pokemonToAdd) => {
+
+    detalhes.map((pokemon) => {
+      if (pokemon.name === pokemonToAdd) {
+        setPokedex([...pokedex, pokemon]);
+        setDetalhes(detalhes.filter((pokemonToAdd) => pokemonToAdd !== pokemon));
+      }
+    })
+
   };
+
 
   const listaPokemon =
     detalhes &&
@@ -69,15 +93,11 @@ const Home = () => {
           key={poke.name}
           nome={poke.name}
           image={poke.sprites.other.dream_world.front_default}
+          hasAddButton={true}
+          addToPokedex={addToPokedex}
         />
       );
     });
-
-  const navigate = useNavigate();
-
-  const proximaPagina = () => {
-    navigate("/Pokedex");
-  };
 
   return (
     <div>

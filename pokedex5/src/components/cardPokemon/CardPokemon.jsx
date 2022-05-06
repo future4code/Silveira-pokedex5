@@ -9,7 +9,7 @@ const CardPokemon = (props) => {
           <Imagem src={props.image}/>
         </ContainerImagem>
         <ContainerButtons>
-          <Button>Adicionar um Pokédex</Button>
+          {props.hasAddButton === true ? <Button onClick={() => props.addToPokedex(props.nome)}>Adicionar na Pokédex</Button> : <Button onClick={() => props.removeFromPokedex(props.nome)}>Remover da Pokédex</Button>}      
           <Button>Ver detalhes</Button>
         </ContainerButtons>
      </CardPokemonStyled>
