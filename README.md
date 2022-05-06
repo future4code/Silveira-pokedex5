@@ -6,7 +6,7 @@ Nome dos integrantes:
 - Matheus Marques Mantini Viana
 
 Link do Surge: 
-https://alessandra-erica-matheus-pokedex.surge.sh/Pokedex
+https://alessandra-erica-matheus-pokedex.surge.sh
 
 O que funciona:
 - Tudo funciona confome solicitado.
