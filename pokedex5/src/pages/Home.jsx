@@ -6,6 +6,8 @@ import styled from "styled-components";
 import GlobalStateContext from "../context/GlobalStateContext";
 import { BASE_URL } from "../constants/urls";
 import Header from "../components/header/Header";
+import { irParaPokedex, irParaDetalhes } from "../routes/coordinator";
+
 
 const ContainerGrid = styled.div`
   display: grid;
@@ -17,7 +19,6 @@ const ContainerGrid = styled.div`
 
 const Home = () => {  
   const { states, setters } = useContext(GlobalStateContext);
-
   const { list } = states;
   const { setList } = setters;
   const { detalhes } = states;
@@ -30,7 +31,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-
+    console.log(list)
     const novaPokeList = [];
     list &&
       list.forEach((poke) => {
@@ -48,7 +49,6 @@ const Home = () => {
       });
 
   }, [list]);
-
 
   const getPokemon = () => {
     axios
@@ -69,19 +69,17 @@ const Home = () => {
           key={poke.name}
           nome={poke.name}
           image={poke.sprites.other.dream_world.front_default}
+          detalhesPokemon={poke}
+          irParaDetalhes={()=>irParaDetalhes(navigate, poke.name)}
         />
       );
     });
 
   const navigate = useNavigate();
 
-  const proximaPagina = () => {
-    navigate("/Pokedex");
-  };
-
   return (
     <div>
-      <Header title="Lista de Pokémons" btnEsquerda={proximaPagina} btnEsquerdaTexto="Ir para Pokédex" hasButton={false}/>
+      <Header title="Lista de Pokémons" btnEsquerda={()=>irParaPokedex(navigate)} btnEsquerdaTexto="Ir para Pokédex" hasButton={false}/>
       <ContainerGrid>
         {listaPokemon}
       </ContainerGrid>
