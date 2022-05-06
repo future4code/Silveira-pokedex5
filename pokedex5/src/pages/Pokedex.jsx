@@ -21,8 +21,6 @@ export default function Pokedex() {
     }
       
     const { states, setters } = useContext(GlobalStateContext);
-    const { detalhes } = states;
-    const { setDetalhes } = setters;
     const { pokedex } = states;
     const { setPokedex } = setters;
 

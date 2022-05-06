@@ -1,13 +1,13 @@
 import React from "react"
-import {CardAtaqueStyled, H1 } from "./styled"
+import {CardAtaqueStyled, Titulo, Ataque } from "./styled"
 
 
-function CardAtaque() {
+const CardAtaque = (props) => {
     return (
      <CardAtaqueStyled>
-         <H1>Principais Ataques</H1>
+         <Titulo>Principais Ataques:</Titulo>
+         <Ataque>{props.ataque}</Ataque>
      </CardAtaqueStyled>
     );
-  }
-  
-  export default  CardAtaque;
+}
+export default  CardAtaque;

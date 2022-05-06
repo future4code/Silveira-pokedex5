@@ -1,14 +1,13 @@
 import React from "react"
-import {CardTipoStyled, Tipo1, Tipo2 } from "./styled"
+import {CardTipoStyled} from "./styled"
 
 
-function CardTipo() {
+const CardTipo = (props) => {
     return (
      <CardTipoStyled>
-         <Tipo1>tipo 1</Tipo1>
-         <Tipo2>tipo 2</Tipo2>
+         {props.tipos}
      </CardTipoStyled>
     );
-  }
+}
   
-  export default CardTipo;
+export default CardTipo;
