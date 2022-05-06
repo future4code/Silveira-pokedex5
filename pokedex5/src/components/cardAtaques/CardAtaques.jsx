@@ -1,18 +1,13 @@
-import React, { useContext } from "react"
-import GlobalStateContext from "../../context/GlobalStateContext";
-import {CardAtaqueStyled, H1 } from "./styled"
+import React from "react"
+import {CardAtaqueStyled, Titulo, Ataque } from "./styled"
 
 
-function CardAtaque(props) {
-    const ataque = useContext(GlobalStateContext);
+const CardAtaque = (props) => {
     return (
      <CardAtaqueStyled>
-         {/* <H1>Principais Ataques: {ataque.tipo}</H1> */}
-         <h3>Pokemon: {props.detalhes.name}</h3>
-         <h3>Altura: {props.detalhes.height}</h3>
-         <h3>{props.detalhes.weight}</h3>
+         <Titulo>Principais Ataques:</Titulo>
+         <Ataque>{props.ataque}</Ataque>
      </CardAtaqueStyled>
     );
-  }
-  
-  export default  CardAtaque;
+}
+export default  CardAtaque;

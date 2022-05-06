@@ -19,7 +19,6 @@ const ContainerGrid = styled.div`
 
 const Home = () => {  
   const { states, setters } = useContext(GlobalStateContext);
-
   const { list } = states;
   const { setList } = setters;
   const { detalhes } = states;
@@ -61,10 +60,6 @@ const Home = () => {
         console.log("Desculpe houve um erro, tente novamente!", error.response);
       });
   };
-
-  const detalheDoPokemon = (nomePokemon) =>{
-    console.log(nomePokemon)
-  }
 
   const listaPokemon =
     detalhes &&

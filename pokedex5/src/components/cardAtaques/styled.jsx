@@ -7,7 +7,11 @@ height: 400px;
 
 `
 
-export const H1 = styled.h1`
+export const Titulo = styled.h1`
 align-items: center;
 margin-left: 22px;
+`
+
+export const Ataque = styled.p`
+margin-left:60px 
 `
