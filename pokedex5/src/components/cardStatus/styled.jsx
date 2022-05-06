@@ -1,21 +1,26 @@
 import styled from "styled-components"
 
 export const CardStatusStyled = styled.div`
-border: 2px solid black;
-width: 25%;
-height: 500px;
-
+  width: 100%;
+  height: auto;
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.55);
+background-color: #cfc165;
 `
 
-export const H1 = styled.h1`
-margin-left: 100px;
+export const Titulo = styled.h1`
+align-items: center;
 
 `
 
 
 export const Poderes = styled.p`
-margin-left: 5px;
-padding: 15px;
 font-weight: bolder;
 
 `

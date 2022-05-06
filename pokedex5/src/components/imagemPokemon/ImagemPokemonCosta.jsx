@@ -1,8 +1,9 @@
 import React from "react";
+import { Imagem } from "./styled";
 
 const ImagemPokemonCosta = (props) => {
     return(
-          <img src={props.imagem}/>
+          <Imagem src={props.imagem}/>
     )
 };
 export default ImagemPokemonCosta;

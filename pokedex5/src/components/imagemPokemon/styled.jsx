@@ -2,7 +2,8 @@ import styled from "styled-components"
 
 export const Imagem = styled.img`
     align-self: center;
-    height: 75%;
+    min-width: 200px;
+    height: auto;
     display: flex;
     flex-direction: column;
     -webkit-box-pack: justify;

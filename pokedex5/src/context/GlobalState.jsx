@@ -38,7 +38,7 @@ const GlobalState = (props) => {
 
   const getPokemon = () => {
     axios
-      .get(`${BASE_URL}?limit=20&offset=0`)
+      .get(`${BASE_URL}?limit=50&offset=0`)
       .then((response) => {
         setList(response.data.results);
       })

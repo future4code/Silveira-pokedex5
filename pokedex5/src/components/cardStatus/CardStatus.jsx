@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
 import GlobalStateContext from "../../context/GlobalStateContext";
-import {CardStatusStyled, H1, Poderes} from "./styled"
+import {CardStatusStyled, Titulo, Poderes} from "./styled"
 
 
 const CardStatus = (props) => {
     return (
      <CardStatusStyled>
-         <H1>Poderes</H1>
+         <Titulo>Poderes:</Titulo>
         {props.poderes}
      </CardStatusStyled>
     );

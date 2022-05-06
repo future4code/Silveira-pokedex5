@@ -7,8 +7,9 @@ export const irParaPokedex = (navigate) => {
 };
 
 export const irParaHome = (navigate) => {
-    navigate("/")
+    navigate("/");
 }
+
 export const voltar = (navigate) => {
     navigate(-1)
 }

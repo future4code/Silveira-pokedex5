@@ -4,14 +4,13 @@ export const CardPokemonStyled = styled.li`
 display: grid;
 grid-template-columns: 1fr;
 grid-template-rows: 40px 1fr 60px;
-border: 2px solid black;
+border: 1px solid #ccc;
+border-radius: 15px;
 width: 100%;
 height: 350px;
 list-style: none;
-/* display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center; */
+box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.55);
+background-color: #cfc165;
 `
 
 export const TituloCard = styled.h2`
@@ -39,8 +38,15 @@ export const ContainerButtons = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
   grid-row: 3/4;
+`;
+
+export const ContainerLeft = styled.div`
+  margin-right: 10px;
+`;
+
+export const ContainerRight = styled.div`
+  margin-left: 10px;
 `;
 
 export const Button = styled.button`
