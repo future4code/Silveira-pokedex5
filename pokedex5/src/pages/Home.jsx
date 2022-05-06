@@ -1,10 +1,8 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import CardPokemon from "../components/cardPokemon/CardPokemon";
 import styled from "styled-components";
 import GlobalStateContext from "../context/GlobalStateContext";
-import { BASE_URL } from "../constants/urls";
 import Header from "../components/header/Header";
 import { irParaPokedex, irParaDetalhes } from "../routes/coordinator";
 
@@ -18,47 +16,25 @@ const ContainerGrid = styled.div`
 `;
 
 const Home = () => {  
+
+  const navigate = useNavigate();
+
   const { states, setters } = useContext(GlobalStateContext);
-  const { list } = states;
-  const { setList } = setters;
+
   const { detalhes } = states;
   const { setDetalhes } = setters;
+  const { pokedex } = states;
+  const { setPokedex } = setters;
 
-  useEffect(() => {
+  const addToPokedex = (pokemonToAdd) => {
 
-    getPokemon();
+    detalhes.map((pokemon) => {
+      if (pokemon.name === pokemonToAdd) {
+        setPokedex([...pokedex, pokemon]);
+        setDetalhes(detalhes.filter((pokemonToAdd) => pokemonToAdd !== pokemon));
+      }
+    })
 
-  }, []);
-
-  useEffect(() => {
-    console.log(list)
-    const novaPokeList = [];
-    list &&
-      list.forEach((poke) => {
-        axios
-          .get(`${BASE_URL}/${poke.name}`)
-          .then((response) => {
-            novaPokeList.push(response.data);
-            if (novaPokeList.length === 20) {
-              setDetalhes(novaPokeList);
-            }
-          })
-          .catch((erro) => {
-            console.log(erro);
-          });
-      });
-
-  }, [list]);
-
-  const getPokemon = () => {
-    axios
-      .get(`${BASE_URL}?limit=20&offset=0`)
-      .then((response) => {
-        setList(response.data.results);
-      })
-      .catch((error) => {
-        console.log("Desculpe houve um erro, tente novamente!", error.response);
-      });
   };
 
   const listaPokemon =
@@ -69,13 +45,13 @@ const Home = () => {
           key={poke.name}
           nome={poke.name}
           image={poke.sprites.other.dream_world.front_default}
+          hasAddButton={true}
+          addToPokedex={addToPokedex}
           detalhesPokemon={poke}
           irParaDetalhes={()=>irParaDetalhes(navigate, poke.name)}
         />
       );
     });
-
-  const navigate = useNavigate();
 
   return (
     <div>
