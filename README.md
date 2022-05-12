@@ -1,16 +1,15 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Alessandra Sandeski Marmiroli
+- Erica Inacia de Lima
+- Matheus Marques Mantini Viana
 
-Link do Surge: www.link.com.br
+Link do Surge: 
+https://alessandra-erica-matheus-pokedex.surge.sh
 
 O que funciona:
-- Item 1
-- Item 2
+- Tudo funciona confome solicitado.
 
 O que não funciona: 
-- Item 3
-- Item 4
+- Quando remove um pokemon da pokedex, e volta pra Home, ele não aparece até que a tela seja recarregada.
